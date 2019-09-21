@@ -3,7 +3,7 @@
 require 'russian_central_bank'
 
 # Central bank rate
-class MoneyClient
+class MoneyBot
   def initialize
     Money.locale_backend = :currency
     bank = Money::Bank::RussianCentralBank.new
