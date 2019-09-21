@@ -1,13 +1,9 @@
 # frozen_string_literal: true
 
-require 'russian_central_bank'
+require './lib/telegram_bot'
+require './lib/money_client'
 
-Money.locale_backend = :currency
-bank = Money::Bank::RussianCentralBank.new
-
-Money.default_bank = bank
-
-# Load today's rates
-bank.update_rates
-
-p Money.new(1_00, 'USD').exchange_to('RUB').format
+money_client = MoneyClient.new
+settings = YAML.safe_load(File.read('./config/settings.yml'))
+telegram_bot = TelegramBot.new(settings: settings)
+telegram_bot.send_message(money_client.rate('USD'))

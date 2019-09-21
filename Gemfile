@@ -2,6 +2,8 @@
 
 source 'https://rubygems.org'
 
+gem 'pry'
 gem 'rubocop'
 gem 'russian_central_bank'
-gem 'telegram-bot'
+gem 'socksify'
+gem 'telegram-bot-ruby'
